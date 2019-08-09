@@ -1,0 +1,113 @@
+body {
+    /*background: #f8f8f8;*/
+    text-align: left;
+    font-family: 'PT Sans', Helvetica, Arial, sans-serif;
+    color: #555;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.table_book{
+    width: 80%;
+    /*position: relative;*/
+    /*margin: 30px auto;*/
+    /*border-collapse: collapse;*/
+    /*border: 1px solid gray;*/
+}
+.list_head{
+    position: absolute ;
+    left: 600px;
+    /*height: 50px;*/
+}
+
+.show_list {
+    margin-top: 10px;
+    margin-left: 30px;
+    float: left;
+    width: 100%;
+    height: 500px;
+    border-top-width: 1px;
+    border-left-width: 1px;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-top-color: #EBEBEB;
+    border-left-color: #EBEBEB;
+}
+.show_list  td {
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-right-color: #EBEBEB;
+    border-bottom-color: #EBEBEB;
+    height: 40px;
+    font-size: 13px;
+    color: #7C7C7C;
+    text-align: center;
+}
+.show_list .title_bg {
+    font-size: 14px;
+    background-color: #FAFAFA;
+    color: #8B8B8B;
+    height: 45px;
+    font-weight: bold;
+}
+.show_list a {
+    color: #10AEE6;
+    text-decoration: none;
+}
+.show_list a:hover {
+    color: #FF6600;
+}
+
+.td_span{
+    text-align: center;
+    font-size: 300px;
+}
+
+.list_img{
+
+    width: 50px;
+    height: 50px;
+    border: 0;
+}
+.show_list .green{
+    color: #03a300;
+}
+.show_list .gray{
+    color: #999999;
+}
+.th_img{
+    width: 350px;
+
+}
+.th_author{
+    width: 200px;
+}
+.th_pub{
+    width: 200px;
+}
+.th_num{
+    width: 100px;
+}
+.th_price{
+    width: 100px;
+}
+.th_isbn{
+    width: 200px;
+}
+.th_category{
+    width: 180px;
+}
+.th_desc{
+    width: 400px;
+}
+.th_operate{
+    width: 100px;
+}
+.th_borrowtime{
+    width: 150px;
+}
+.th_returntime{
+    width: 150px;
+}

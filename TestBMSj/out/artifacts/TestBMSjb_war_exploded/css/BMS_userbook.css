@@ -1,0 +1,89 @@
+
+.user_head{
+    /*position: absolute ;*/
+    width: auto;
+    height: 250px;
+}
+.user_head_div{
+
+}
+.div_user_img{
+    position: absolute ;
+    left: 150px;
+    top: 80px;
+}
+.user_img{
+    width: 130px;
+    height: 180px;
+}
+.div_user_id{
+    position: absolute ;
+    left: 400px;
+    top: 90px;
+}
+.div_user_name{
+    position: absolute ;
+    left: 400px;
+    top: 140px;
+}
+.div_user_sex{
+    position: absolute ;
+    left: 700px;
+    top: 85px;
+}
+.div_user_phone{
+    position: absolute ;
+    left: 700px;
+    top: 140px;
+}
+.div_user_email{
+    position: absolute ;
+    left: 950px;
+    top: 140px;
+}
+.div_user_address{
+    position: absolute ;
+    left: 950px;
+    top: 80px;
+}
+.div_user_desc{
+    position: absolute ;
+    left: 450px;
+    top: 190px;
+ }
+.user_id_pos{
+    position: absolute ;
+    left: 350px;
+    top: 90px;
+}
+.user_name_pos{
+    position: absolute ;
+    left: 350px;
+    top: 140px;
+}
+.user_sex_pos{
+    position: absolute ;
+    left: 650px;
+    top: 85px;
+}
+.user_phone_pos{
+    position: absolute ;
+    left: 650px;
+    top: 140px;
+}
+.user_email_pos{
+    position: absolute ;
+    left: 900px;
+    top: 140px;
+}
+.user_address_pos{
+    position: absolute ;
+    left: 900px;
+    top: 80px;
+}
+.user_desc_pos{
+    position: absolute ;
+    left: 350px;
+    top: 190px;
+}
+
