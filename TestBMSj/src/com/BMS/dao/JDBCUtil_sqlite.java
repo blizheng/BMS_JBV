@@ -7,6 +7,10 @@ import java.sql.SQLException;
 public class JDBCUtil_sqlite {
 
 //    private static String DB_URL = "jdbc:sqlite:C:/Users/zheng/Desktop/javaweb实验代码/jsp_sy7/bookstore.db";
+    private static String MySQL_URL="jdbc:mysql://localhost:3306/test_bms";
+    private static String MySQL_USERS="zheng";
+    private static String MySQL_PASS="123456";
+    private static String MySQL_DRIVE="com.mysql.jdbc.Driver";
 
     private static String DB_URL = "jdbc:sqlite:F:/IDEA/TestBMSj/DB/BMS.db";
     private static String DB_DRIVER = "org.sqlite.JDBC";
@@ -14,6 +18,9 @@ public class JDBCUtil_sqlite {
 
     public static Connection getConnection() {
         try {
+//            Class.forName(MySQL_DRIVE);
+//            connection = DriverManager.getConnection(MySQL_URL,MySQL_USERS,MySQL_PASS);
+
             Class.forName(DB_DRIVER);
             connection = DriverManager.getConnection(DB_URL);
         } catch (ClassNotFoundException e) {

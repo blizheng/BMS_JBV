@@ -19,13 +19,13 @@ public class BorrowDaoImpl implements BorrowDao {
 
                 preparedStatement = connection.prepareStatement(sql);
                 preparedStatement.setString(1, returninfo[2]);
-                preparedStatement.setInt(2, Integer.parseInt(returninfo[1]));
-                preparedStatement.setInt(3, Integer.parseInt(returninfo[0]));
+                preparedStatement.setLong(2, Integer.parseInt(returninfo[1]));
+                preparedStatement.setLong(3, Integer.parseInt(returninfo[0]));
 
                 rs = preparedStatement.executeUpdate();
                 if (rs > 0)
                     return 1;
-                else return 0;
+                else return 2;
             } catch (SQLException e) {
                 e.printStackTrace();
                 System.out.println("borrow表查询出错!!!!!!!--return");

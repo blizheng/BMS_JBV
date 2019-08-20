@@ -1,6 +1,7 @@
 package com.BMS.controller;
 
 import com.BMS.service.BorrowService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 /*还书使用*/
 @WebServlet("/ReturnBook")
@@ -24,27 +26,12 @@ public class ReturnBookController extends HttpServlet {
 
         String[] returninfo=request.getParameter("returnarr").split(",");
         BorrowService updatereturn=new BorrowService();
-        updatereturn.update_return(returninfo);
+        int bo_result=updatereturn.update_return(returninfo);
 
-
-
-
-
-
-
-
-
-
-//        JSONObject json =GetRequestJsonUtils.getRequestJsonObject(request);//不
-
-//        JSONObject json1=JSONObject.fromObject("{'username' : '11111','clientid' : '','password' : '222222'}");
-//        Map<String, Object> map =json1;
-//        for (Map.Entry<String, Object> entry : map.entrySet()) {
-//            System.out.println(entry.getKey()+"="+entry.getValue());
-//        }
-//
-//
-//        System.out.println("123132");
+        PrintWriter out=response.getWriter();
+        ObjectMapper mapper = new ObjectMapper();
+        String result = mapper.writeValueAsString(bo_result);
+        out.write(result);
 
     }
 

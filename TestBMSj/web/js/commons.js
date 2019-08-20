@@ -15,4 +15,5 @@ function initAJAX() {
             }
         }
     }
+    return xmlHttp;
 }

@@ -18,11 +18,11 @@ function getUserInfo1() {
     xmlHttp.send();
 }*/
 
+
 function getUserInfo(user_id) {
     xmlHttp.open("GET", "/User_byID?user_id=" + user_id, true);
     xmlHttp.onreadystatechange = function () {
         if (xmlHttp.readyState == 4) {
-
             var data = xmlHttp.responseText;
             var obj = JSON.parse(data);
             // var user_arr;
@@ -36,20 +36,27 @@ function getUserInfo(user_id) {
                 if(!obj[i].user_address)obj[i].user_address="";
                 if(!obj[i].user_description)obj[i].user_description="";
                 */
+
                 if (obj.length == 1) {
                     // user_arr=[obj[0].user_id,obj[0].user_name,obj[0].user_sex,obj[0].user_phone,obj[0].user_email,
                     //     obj[0].user_address,obj[0].user_desc];
+
                     document.getElementById("user_id").innerHTML = obj[0].user_id;
                     document.getElementById("user_name").innerHTML = obj[0].user_name;
+                    if(obj[0].user_images!="")
+                        document.getElementById("user_image").src = obj[0].user_images;
                     document.getElementById("user_sex").innerHTML = obj[0].user_sex;
                     document.getElementById("user_phone").innerHTML = obj[0].user_phone;
                     document.getElementById("user_email").innerHTML = obj[0].user_email;
                     document.getElementById("user_address").innerHTML = obj[0].user_address;
                     document.getElementById("user_desc").innerHTML = obj[0].user_description;
+
+
                 }
 
             }
             getBorrowAll(user_id);
+
             // document.getElementById("user_info").innerHTML = str;
             // document.getElementById("user_id").innerHTML = "1212";
             // document.getElementById("user_name").innerHTML = "1212";

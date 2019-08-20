@@ -7,7 +7,7 @@ function getBorrowAll(id) {
             var obj = JSON.parse(data);
             var tbody = document.getElementById("get_bookborrow");
             for (var i in obj) {
-                var trow = getborrowbookDataRow(obj[i]); //定义一个方法,返回tr数据
+                var trow = getborrowbookDataRow(obj[i]);
                 tbody.appendChild(trow);
             }
         }
@@ -39,7 +39,7 @@ function getborrowbookDataRow(borrowbook) {
 
     var priceCell = document.createElement('td'); //价格
     if (!borrowbook.book_price) borrowbook.book_price = "";
-    priceCell.innerHTML = borrowbook.book_price.toFixed(2); //填充数据
+    priceCell.innerHTML = borrowbook.book_price.toFixed(2)+"¥"; //填充数据
     row.appendChild(priceCell); //加入行
 
     var isbnCell = document.createElement('td'); //isbn
@@ -70,7 +70,7 @@ function getborrowbookDataRow(borrowbook) {
 
     var opeCell = document.createElement('td'); //操作模块
     opeCell.innerHTML = '  <a href="javascript:returnbook_byid(' + borrowbook.book_id + ',' + borrowbook.user_id + ')" target="_self" id="operate">还书</a>' +
-        ' /  <a href="javascript:goonborrow_byid(' + borrowbook.book_id + ',' + borrowbook.user_id + ')" target="_self" id="operate">续借</a>  '; //填充数据
+        ' /<br><a href="javascript:goonborrow_byid(' + borrowbook.book_id + ',' + borrowbook.user_id + ')" target="_self" id="operate">续借</a>  '; //填充数据
     row.appendChild(opeCell); //加入行
 
     return row; //返回tr数据
@@ -124,9 +124,14 @@ function getupdateinfo(bookID, userID) {
 function returnbook_byid(bookID, userID) {
     xmlHttp.open("GET", "/ReturnBook?returnarr=" + getupdateinfo(bookID, userID), true);
     xmlHttp.onreadystatechange = function () {
-        if (xmlhttp.readyState == 4) {// 4 = "loaded"
-            if (xmlhttp.status == 200) {// 200 = OK
+        if (xmlHttp.readyState==4) {// 4 = "loaded"
+            if (xmlHttp.status==200) {// 200 = OK
                 // ...our code here...
+                var data = xmlHttp.responseText;
+                if(data==1)
+                    alert("还书成功！");
+                else alert("请重登再试！");
+                window.location.href="showID.jsp?id="+userID;
             }
             else {
                 alert("Problem retrieving XML data");
@@ -141,9 +146,13 @@ function returnbook_byid(bookID, userID) {
 function goonborrow_byid(bookID, userID) {
     xmlHttp.open("GET", "/GoonBorrow?goonarr=" + getupdateinfo(bookID, userID), true);
     xmlHttp.onreadystatechange = function () {
-        if (xmlhttp.readyState == 4) {// 4 = "loaded"
-            if (xmlhttp.status == 200) {// 200 = OK
-                // ...our code here...
+        if (xmlHttp.readyState==4) {
+            if (xmlHttp.status==200) {
+                var data = xmlHttp.responseText;
+                if(data==1)
+                    alert("续借成功！");
+                else alert("请重登再试！");
+                window.location.href="showID.jsp?id="+userID;
             }
             else {
                 alert("Problem retrieving XML data");
@@ -165,9 +174,9 @@ function testajax(bookID, userID) {
     // xmlHttp.open("GET", "/BorrowBook?borrowarr=" + bookID+"--"+userID, true);
     xmlHttp.open("GET", "/BorrowBook?borrowarr=" + getupdateinfo(bookID, userID), true);
     xmlHttp.onreadystatechange = function () {
-        if (xmlhttp.readyState == 4) {// 4 = "loaded"
-            if (xmlhttp.status == 200) {// 200 = OK
-                // ...our code here...
+        if (xmlhttp.readyState == 4) {
+            if (xmlhttp.status == 200) {
+
             }
             else {
                 alert("Problem retrieving XML data");

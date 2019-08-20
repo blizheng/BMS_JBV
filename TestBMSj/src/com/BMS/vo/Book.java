@@ -4,7 +4,7 @@ public class Book {
     private int book_id;
     private String book_name;
     private String book_author;
-    private Double book_price;
+    private double book_price;
     private String book_pub;
     private String book_image;
     private int book_num;
@@ -36,11 +36,11 @@ public class Book {
         this.book_author = book_author;
     }
 
-    public Double getBook_price() {
+    public double getBook_price() {
         return book_price;
     }
 
-    public void setBook_price(Double book_price) {
+    public void setBook_price(double book_price) {
         this.book_price = book_price;
     }
 

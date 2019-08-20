@@ -45,7 +45,7 @@ function getDataRow(book, userid) {
 
     var priceCell = document.createElement('td'); //价格
     if (!book.book_price) book.book_price = "";
-    priceCell.innerHTML = book.book_price.toFixed(2); //填充数据
+    priceCell.innerHTML = book.book_price.toFixed(2)+"¥"; //填充数据
     row.appendChild(priceCell); //加入行
 
     var isbnCell = document.createElement('td'); //isbn
@@ -92,7 +92,7 @@ function borrowbookfunc(bookid, userid) {
         if (xmlHttp.readyState == 4) {
             var data=xmlHttp.responseText;
             if(data==0)
-                alert("借阅失败，后台问题，请联系管理员修复！");
+                alert("借阅失败！");
             else if(data==1)
                 alert("借书成功！");
             else if(data==2)

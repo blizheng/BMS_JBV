@@ -33,5 +33,6 @@ public class user_id_controller extends HttpServlet {
         String jsonStr = mapper.writeValueAsString(userList);
         PrintWriter out = response.getWriter();
         out.write(jsonStr);
+
     }
 }

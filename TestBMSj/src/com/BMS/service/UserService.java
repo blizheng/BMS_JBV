@@ -12,4 +12,23 @@ public class UserService {
     public List<User> getUserbyUserID(int user_id){
         return user.getUserbyUserID(user_id);
     }
+
+    public int UpdateUserInfo(String[] userinfoarr){
+        return user.UpdateUserInfo(userinfoarr);
+    }
+
+    public int UpdateInfo_bylist(List list){
+        return user.UpdateInfo_bylist(list);
+    }
+
+    public int InsertUserInfo(String[] reg_user){
+        return user.InsertUserInfo(reg_user);
+    }
+    public int CheckUserID(int id){
+        return user.CheckUserID(id);
+    }
+
+    public int ChangePasswd(String[] pwdinfo){
+        return user.ChangePasswd(pwdinfo);
+    }
 }

@@ -26,7 +26,7 @@ public class BorrowBookController extends HttpServlet {
         BorrowService updateborrow = new BorrowService();
         int result=updateborrow.update_borrow(borrowinfo);
 
-        System.out.println(result);
+//        System.out.println(result);
         response.setCharacterEncoding("UTF-8");
 
         PrintWriter out = response.getWriter();
