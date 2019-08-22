@@ -1,0 +1,55 @@
+.manager_id_pos{
+    position: absolute ;
+    left: 200px;
+    top: 80px;
+}
+.div_manager_id{
+    position: absolute ;
+    left: 250px;
+    top: 80px;
+}
+.manager_name_pos{
+    position: absolute ;
+    left: 450px;
+    top: 80px;
+}
+.div_manager_name{
+    position: absolute ;
+    left: 500px;
+    top: 80px;
+}
+.manager_privilege_pos{
+    position: absolute ;
+    left: 700px;
+    top: 80px;
+}
+.div_manager_privilege{
+    position: absolute ;
+    left: 750px;
+    top: 80px;
+}
+.startservlet_bt_pos{
+    position: absolute ;
+    left: 320px;
+    top: 190px;
+}
+.stopservlet_bt_pos{
+    position: absolute ;
+    left: 610px;
+    top: 190px;
+}
+.st_s_bt{
+    text-decoration: none;
+    border: #92e685 1px;
+    padding: 8px;
+    color: #5d665e;
+
+}
+.st_s_bt:hover{
+
+    background-color: #e6d12d;
+    color: #660200;
+
+}
+
+

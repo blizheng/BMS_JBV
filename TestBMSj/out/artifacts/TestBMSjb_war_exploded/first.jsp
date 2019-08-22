@@ -9,6 +9,7 @@
 <html>
 <head>
     <title>登录界面</title>
+    <link href="css/bodystyle.css" rel="stylesheet"/>
 </head>
 <body onload="initAJAX();startcheck()">
 <script src="js/cookie_info.js"></script>
@@ -19,34 +20,34 @@
         else getyzm();
     }
 </script>
-<form action="" method="post" id="login_form">
+<form action="javascript:ajpost()" method="post" id="login_form" class="login_in">
     <table>
         <tr>
-            <td>用户名</td>
-            <td><input type="text" name="ID" id="ID"></td>
+            <td class="log_tdname">用户名</td>
+            <td><input type="text" name="ID" id="ID" class="login_input"></td>
         </tr>
         <tr>
-            <td>密 码</td>
-            <td><input type="text" name="passwd" id="passwd"></td>
+            <td class="log_tdname">密 码</td>
+            <td><input type="password" name="passwd" id="passwd" class="login_input"></td>
         </tr>
         <tr>
-            <td>验证码</td>
-            <td><input type="text" name="yzmtext" id="yzmtext" value=""></td>
+            <td class="log_tdname">验证码</td>
+            <td><input type="text" name="yzmtext" id="yzmtext" value="" class="login_input"></td>
             <td><a href="javascript:getyzm()" target="_self">
-                <img src="temp/yzm-test.jpg" style="height: 20px;width: 90px" id="yzmimg">
+                <img src="temp/yzm-test.jpg" style="height: 20px;width: 90px;border-radius: 4px;" id="yzmimg">
             </a>
             </td>
         </tr>
         <tr>
             <td colspan="2" style="text-align: center;">
-                <input type="button" value="登录" onclick="ajpost()">
-                <input type="button" value="注册" onclick="toregister()">
+                <input type="submit" value="登录" class="input_bt">
+                <input type="button" value="注册" onclick="toregister()" class="input_bt">
             </td>
         </tr>
     </table>
 </form>
 <div style="visibility: hidden;display: none" id="yzm_imgtext"></div>
-<a href="javascript:ajpost()" target="_self">haha</a>
+<%--<a href="javascript:ajpost()" target="_self">haha</a>--%>
 <script src="js/jquery-1.4.2.min.js"></script>
 <%--<script src="js/jquery.js"></script>--%>
 <script src="js/commons.js"></script>

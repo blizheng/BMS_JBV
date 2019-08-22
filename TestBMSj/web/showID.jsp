@@ -32,7 +32,10 @@
         var dt=document.cookie;
         var infoarr=getCookie_info();
         if(infoarr.servletstop=="true")window.location.href="error.jsp";
-        else if(dt==""||infoarr.user_id=="")window.location.href = "first.jsp";
+        else if(dt==""||infoarr.user_id=="") {
+            alert("请先登录！");
+            window.location.href = "first.jsp";
+        }
         else {
             getUserInfo(infoarr.user_id);
             // getBookAll(infoarr.user_id);
@@ -58,7 +61,7 @@
     <div><a href="javascript:showBorrow()" target="_self">还书</a></div>
     <div><a href="first.jsp" target="_blank">登录</a></div>
     <div><a href="javascript:menu_changeuserinfo()" target="_blank">设置</a></div>
-    <div><a href="/cookieclear" target="_self">退出</a></div>
+    <div><a href="/cookieclear?cid=1" target="_self">退出</a></div>
     </div>
 </div>
 <br>

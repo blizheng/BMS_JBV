@@ -1,6 +1,7 @@
 package com.BMS.controller;
 
 import com.BMS.service.UserService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadBase;
 import org.apache.commons.fileupload.FileUploadException;
@@ -30,21 +31,26 @@ public class update_user_info_controller extends HttpServlet {
 //        }
 
         UserService updateinfo = new UserService();
-        int result = updateinfo.UpdateInfo_bylist(infolist);
+        int res = updateinfo.UpdateInfo_bylist(infolist);
 //        System.out.println("运行结果："+result);
 
+        PrintWriter out=response.getWriter();
+        ObjectMapper mapper = new ObjectMapper();
+        String result = mapper.writeValueAsString(res);
+        out.write(result);
 
-        String mesg = new String();
-        if (result == 1)
-            mesg = "修改成功！";
-        else if (result == 2)
-            mesg = "数据错误！请重试！";
-        else
-            mesg = "未知错误！";
 
-        response.setContentType("text/html;charset=utf-8");
-
-        response.sendRedirect("user_info.jsp");
+//        String mesg = new String();
+//        if (result == 1)
+//            mesg = "修改成功！";
+//        else if (result == 2)
+//            mesg = "数据错误！请重试！";
+//        else
+//            mesg = "未知错误！";
+//
+//        response.setContentType("text/html;charset=utf-8");
+//
+//        response.sendRedirect("user_info.jsp");
 
     }
 
@@ -78,7 +84,7 @@ response.setContentType("text/html;charset=UTF-8");
         List<String> infolist = new ArrayList<>();
         infolist.clear();
         //文件夹名称
-        String path_dir = "/uploadFiles";
+        String path_dir = "/userimages";
         //数据库内路径
         String DB_useurl = "";
         //设置文件上传基本路径

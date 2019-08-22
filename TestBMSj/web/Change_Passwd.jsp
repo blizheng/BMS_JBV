@@ -26,16 +26,16 @@
 
     }
 </script>
-
+<div style="position: absolute;top: 130px;left: 480px;">
 <form action="javascript:tochange()" method="post" enctype="multipart/form-data" id="infoform">
     <table>
         <tr>
             <td>ID</td>
-            <td><input type="number" name="ID" id="ID"></td>
+            <td><input type="text" name="ID" id="ID" readonly></td>
         </tr>
         <tr>
             <td>姓名</td>
-            <td><input type="text" name="name" id="name"></td>
+            <td><input type="text" name="name" id="name" readonly></td>
         </tr>
         <tr>
             <td>原密码</td>
@@ -48,20 +48,26 @@
         </tr>
         <tr>
             <td>确认密码</td>
-            <td><input type="password" name="newpasswd2" id="newpasswd2" onblur="checkpwd()"></td>
+            <td><input type="password" name="newpasswd2" id="newpasswd2" onblur="checkpwd()" onchange="checkpwd()"></td>
             <td><span id="passwdspan"></span> </td>
         </tr>
         <tr>
             <td colspan="2" style="text-align: center;">
                 <input type="submit" value="提交">
-                <input type="button" value="取消" onclick="getinfo()">
+                <input type="button" value="取消" onclick="touserinfo()">
 
             </td>
         </tr>
     </table>
 </form>
+</div>
 <script src="js/jquery-1.4.2.min.js"></script>
 <script language="JavaScript">
+
+    function touserinfo() {
+        window.location.href="showID.jsp";
+    }
+
     function checkpwd() {
         var passwd=document.getElementById("newpasswd").value;
         var passwd2=document.getElementById("newpasswd2").value;
@@ -93,7 +99,7 @@
                 success: function (result) {
                     if(result==1) {
                         alert("修改成功！");
-
+                        window.location.reload();
                     }
                     else if(result==3)
                         alert("密码错误！");

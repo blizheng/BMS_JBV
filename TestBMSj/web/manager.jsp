@@ -8,40 +8,75 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
-    <link href="css/BMS_userbook.css" rel="stylesheet"/>
+    <title>管理员登录</title>
+    <link href="css/bodystyle.css" rel="stylesheet"/>
 </head>
-<body>
+<body onload="initAJAX();startcheck()">
+<script src="js/cookie_info.js"></script>
+<script language="JavaScript">
+    function startcheck() {
 
-<div class="user_head" id="user_info">
-    <div class="div_user_img"><img src="images/kittens.jpg" class="user_img" id="user_image"></div>
-    <div class="user_head_div user_id_pos">ID</div><div class="div_user_id" id="user_id">6130116096</div>
-    <div class="user_head_div user_name_pos">姓名</div><div class="div_user_name" id="user_name">hahah</div>
-    <div class="user_head_div user_sex_pos">性别</div><div class="div_user_sex" id="user_sex">男</div>
-    <div class="user_head_div user_phone_pos">Phone</div><div class="div_user_phone" id="user_phone">123654455</div>
-    <div class="user_head_div user_email_pos">Email</div> <div class="div_user_email" id="user_email">1145@qq.com</div>
-    <div class="user_head_div user_address_pos">地址</div><div class="div_user_address" id="user_address">江西南昌</div>
-    <div class="user_head_div user_desc_pos">个人描述</div><div class="div_user_desc" id="user_desc">这hi竞爱仕达按手打</div>
+    }
+</script>
 
-</div>
+<form action="" method="post" id="login_form" class="login_in">
+    <table>
+        <tr>
+            <td class="log_tdname">用户名</td>
+            <td><input type="text" name="ID" id="ID" class="login_input"></td>
+        </tr>
+        <tr>
+            <td class="log_tdname">密 码</td>
+            <td><input type="password" name="passwd" id="passwd" class="login_input"></td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align: center;">
+                <input type="button" value="登录" onclick="managercheck()" class="input_bt">
+                <input type="button" value="取消" onclick="tofirst()" class="input_bt">
+            </td>
+        </tr>
+    </table>
+</form>
+<script src="js/jquery-1.4.2.min.js"></script>
+<script src="js/commons.js"></script>
+<script language="JavaScript">
+    function tofirst() {
+        window.location.href="first.jsp";
+    }
+    function managercheck() {
+        var getjson = {
+            "ID": $("#ID").val(),
+            "passwd": $("#passwd").val(),
+        };
+        $.ajax({
+            type: "POST",
+            url: "/manager_list",
+            // contentType: "application/json", //如果提交的是json数据类型，则必须有此参数,表示提交的数据类型
+            dataType: "json", //表示返回值类型，不必须
+            data: getjson,
+            success: function (result) {
+                if(result==1)
+                    window.location.href="ManagerOP.jsp";
+                else alert("密码账号错误！");
+            },
+            error: function (data) {
+                alert("请重新填写！");
+            }
+        });
+    }
+
+
+</script>
 
 
 
-<!--	  footer-->
-<link rel="stylesheet" type="text/css" href="css/footer.css">
-<div class="nyh_footer" style="position: relative;">
-    <%--<div class="nyh_footer_nav">--%>
-        <%--<a href="#" target="_blank">关于我们</a>--%>
-        <%--<a href="#" target="_blank">一起惠 · 好优搜</a>--%>
-        <%--<a href="#" target="_blank">购物返利</a>--%>
-        <%--<a href="index.html" target="_blank">商城</a>--%>
-        <%--<a href="#" target="_blank">优质商品</a>--%>
-        <%--<a href="#" target="_blank">比价网</a>--%>
-        <%--<a href="#" target="_blank">广告招商</a>--%>
 
-    <%--</div>--%>
-    <div class="nyh_copyright">南昌大学计算机科学与技术162班郑梓熙 © 2019  </div>
-</div><!--	  footer-->
+<%--<!--	  footer-->--%>
+<%--<link rel="stylesheet" type="text/css" href="css/footer.css">--%>
+<%--<div class="nyh_footer" style="position: relative;">--%>
+
+    <%--<div class="nyh_copyright">南昌大学计算机科学与技术162班郑梓熙 © 2019  </div>--%>
+<%--</div><!--	  footer-->--%>
 
 </body>
 </html>

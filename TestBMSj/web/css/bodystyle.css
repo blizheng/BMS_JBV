@@ -1,0 +1,39 @@
+body{
+    background-image: url("/images/bgbody.jpg");
+
+    /*background-repeat: no-repeat;*/
+}
+
+
+.login_in{
+    position: absolute;
+    top: 220px;
+    left: 500px;
+}
+.login_input{
+    width: 250px;
+    height: 25px;
+    border: #5e5e5e;
+    border-bottom-color: #03a300;
+    border-bottom: #3c763d;
+    margin: 12px;
+    border-radius: 10px;
+}
+.log_tdname{
+    font-family: "Chaparral Pro Light";
+    font-size: 18px;
+    color: #2b6fd5;
+
+}
+.input_bt{
+    width: 50px;
+    height: 30px;
+    font-size: medium;
+    border-radius: 5px;
+    margin-left: 35px;
+}
+.input_bt:hover{
+    color: #6ae6cf;
+    background-color: #688c6a;
+}
+

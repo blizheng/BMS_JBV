@@ -12,7 +12,11 @@
 </head>
 
 <body onload="initAJAX();getinfo();">
+<script src="js/commons.js"></script>
+<script src="js/jquery-1.4.2.min.js"></script>
 
+<script src="js/jquery-form.js"></script>
+<%--<script src="js/jquery-form.js"></script>--%>
 <script src="js/cookie_info.js"></script>
 <script language="JavaScript">
 
@@ -32,8 +36,8 @@
     <%--}--%>
 
 </script>
-
-<form action="update_userinfo" method="post" enctype="multipart/form-data" id="infoform" onsubmit="return checkform()">
+<div style="position: absolute;top: 130px;left: 480px;">
+<form action="/update_userinfo" method="post" enctype="multipart/form-data" id="infoform" onsubmit="return submitform()">
     <table>
         <tr style="visibility: hidden;display: none;">
             <td>ID</td>
@@ -72,7 +76,8 @@
         </tr>
         <tr>
             <td>简介</td>
-            <td><input type="text" name="desc" id="desc"></td>
+            <%--<td><input type="text" name="desc" id="desc"></td>--%>
+            <td><textarea type="text" name="desc" id="desc"></textarea></td>
         </tr>
         <tr>
             <td colspan="2" style="">
@@ -83,6 +88,7 @@
         </tr>
     </table>
 </form>
+</div>
 <%--
 <a href="javascript:newwin()" target="_blank">123</a>
 <script language="JavaScript">
@@ -91,12 +97,29 @@
     }
 </script>
 --%>
-<script src="js/commons.js"></script>
+
+
+
 <script language="JavaScript">
+
 
     function change_passwd() {
         window.location.href="Change_Passwd.jsp";
     }
+
+    function submitform() {
+        if (checkform())
+        {
+            $("#infoform").ajaxSubmit(function(message) {
+                if (message==1)
+                    alert("修改成功！");
+                else alert("失败，请重试！");
+            });
+        }
+        return false;
+
+    }
+
 
     function checkform() {
         // var form=document.getElementById("infoform");
@@ -104,7 +127,9 @@
         if (alr != "" && alr != null) {
             var passwd = document.getElementById("passwd").value;
             if (alr == passwd)
+            {
                 return true;
+            }
             else
                 alert("密码错误！");
         }
@@ -137,7 +162,7 @@
                         document.getElementById("phone").value = obj[0].user_phone;
                         document.getElementById("email").value = obj[0].user_email;
                         document.getElementById("address").value = obj[0].user_address;
-                        document.getElementById("desc").value = obj[0].user_description;
+                        document.getElementById("desc").innerText = obj[0].user_description;
                     }
                 }
             }
@@ -145,5 +170,6 @@
         xmlHttp.send();
     }
 </script>
+
 </body>
 </html>

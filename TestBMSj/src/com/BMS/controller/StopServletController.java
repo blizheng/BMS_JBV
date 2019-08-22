@@ -21,8 +21,10 @@ public class StopServletController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Cookie[] cookies = request.getCookies();
         for (Cookie cookie : cookies) {
+            if ("user_ID".equals(cookie.getName())) {
                 cookie.setMaxAge(0);
                 response.addCookie(cookie);
+            }
         }
         Cookie stopcookie=new Cookie("servletstop","true");
         stopcookie.setMaxAge(6*60*60);//有效期

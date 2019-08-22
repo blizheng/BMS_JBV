@@ -24,7 +24,7 @@ public class UserDaoImpl implements UserDao {
             connection = JDBCUtil_sqlite.getConnection();
             String sql = "select * from user where user_id = ?";
             preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setLong(1, user_id);
+            preparedStatement.setInt(1, user_id);
             rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 User user=new User();

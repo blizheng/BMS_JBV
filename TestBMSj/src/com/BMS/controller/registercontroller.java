@@ -1,9 +1,11 @@
 package com.BMS.controller;
 
+import com.BMS.controller.Test.UpLoadFile;
 import com.BMS.service.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
@@ -12,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+@MultipartConfig
 @WebServlet("/registerset")
 public class registercontroller extends HttpServlet {
 
@@ -31,11 +34,17 @@ public class registercontroller extends HttpServlet {
         String user_name=request.getParameter("name");
         String user_sex=request.getParameter("sex");
         String user_passwd=request.getParameter("passwd");
-        String user_img=request.getParameter("headimg");
+        String img2=request.getParameter("image");
         String user_phone=request.getParameter("phone");
         String user_email=request.getParameter("email");
         String user_address=request.getParameter("address");
         String user_desc=request.getParameter("desc");
+
+        String user_img="";
+        if(!"".equals(img2)||img2!=null)
+        {
+            user_img=new UpLoadFile().uploadfile(request,response,"/userimages","image");
+        }
 
         String[] user_reg_info={
                 user_id,user_name,user_sex,user_passwd,user_img,
@@ -45,6 +54,7 @@ public class registercontroller extends HttpServlet {
 //        {
 //            System.out.println("-------"+user_reg_info[i]);
 //        }
+//        System.out.println("++++++++++++++");
 
         //添加信息
         UserService insertuser=new UserService();
@@ -71,7 +81,7 @@ public class registercontroller extends HttpServlet {
     private void deletecookie(HttpServletRequest request, HttpServletResponse response){
         Cookie[] cookies = request.getCookies();
         for (Cookie cookie : cookies) {
-            if(cookie.getName()=="user_ID"||cookie.getName()=="user_Passwd"){
+            if(cookie.getName()=="user_ID"){
                 cookie.setMaxAge(0);
                 response.addCookie(cookie);
             }

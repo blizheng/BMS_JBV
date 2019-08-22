@@ -17,4 +17,15 @@ public class BookService {
         return book.findAll();
     }
 
+    public int addbook(String[] bookinfo){
+        return book.addbook(bookinfo);
+    }
+
+    public int updatebook(String[] bookinfo){
+        return book.updatebook(bookinfo);
+    }
+
+    public int dnbook(String book_isbn){
+        return book.dnbook(book_isbn);
+    }
 }

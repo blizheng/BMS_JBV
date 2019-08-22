@@ -1,16 +1,22 @@
 
 function getCookie_info() {
-    var strCookie = document.cookie;
-    var arrCookie = strCookie.split(";");
+    // var strCookie = document.cookie;
+    // var arrCookie = strCookie.split(";");
     var user_id="";
-    var user_passwd="";
+    // var user_passwd="";
     var servletstop="";
+    var manager_ID="";
+    var manager_privilege="";
     if(getCookie("user_ID")!=null)
         user_id=getCookie("user_ID");
-    if(getCookie("user_Passwd")!=null)
-        user_passwd=getCookie("user_Passwd");
+    // if(getCookie("user_Passwd")!=null)
+    //     user_passwd=getCookie("user_Passwd");
     if(getCookie("servletstop")!=null)
         servletstop=getCookie("servletstop");
+    if(getCookie("manager_ID")!=null)
+        manager_ID=getCookie("manager_ID");
+    if(getCookie("manager_privilege")!=null)
+        manager_privilege=getCookie("manager_privilege");
     // for(var i = 0; i < arrCookie.length; i++){
     //     if(arrCookie[i].split("=")[0]=="user_ID")
     //         user_id=arrCookie[i].split("=")[1];
@@ -19,7 +25,7 @@ function getCookie_info() {
     //     else if(arrCookie[i].split("=")[0]=="servletstop")
     //         servletstop=arrCookie[i].split("=")[1];
     // }
-    return {user_id,user_passwd,servletstop};
+    return {user_id,servletstop,manager_ID,manager_privilege};
 }
 function testcookie() {
     var cookies=document.cookie.split(";");

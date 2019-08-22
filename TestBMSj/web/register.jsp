@@ -9,8 +9,13 @@
 <html>
 <head>
     <title>用户注册</title>
+    <link href="css/bodystyle.css" rel="stylesheet"/>
 </head>
 <body onload="initAJAX();startcheck()">
+<script src="js/commons.js"></script>
+<script src="js/jquery-1.4.2.min.js"></script>
+
+<script src="js/jquery-form.js"></script>
 <script src="js/cookie_info.js"></script>
 <script language="JavaScript">
     function startcheck() {
@@ -19,81 +24,103 @@
         else getyzm();
     }
 </script>
-<form action="javascript:user_register()" method="post" id="register_form" onsubmit="check_form()">
+<script language="JavaScript">
+    function sbtform() {
+        if(check_form()){
+            $("#register_form").ajaxSubmit(function(message) {
+                if(message==1){
+                    var id=document.getElementById("ID").value;
+                    window.location.href="showID.jsp?id="+id;
+                }
+            else
+                {
+                    alert("请重试！");
+                    window.location.reload();
+                }
+            });
+            return false;
+        }
+        return false;
+    }
+</script>
+<form action="/registerset" method="post" id="register_form" enctype="multipart/form-data" onsubmit="return sbtform()" class="login_in">
     <table>
         <tr id="uid">
-            <td><span style="color: red">*</span>用户名</td>
-            <td><input type="text" name="ID" id="ID" placeholder="纯数字（1-9位）" onblur="checkid()"></td>
+            <td class="log_tdname"><span style="color: red">*</span>用户名</td>
+            <td><input type="text" name="ID" id="ID" placeholder="纯数字（1-9位）" onblur="checkid()" class="login_input"></td>
             <td><span id="idspan"></span></td>
         </tr>
         <tr id="uname">
-            <td><span style="color: red">*</span>姓名</td>
-            <td><input type="text" name="name" id="name"></td>
+            <td class="log_tdname"><span style="color: red">*</span>姓名</td>
+            <td><input type="text" name="name" id="name" class="login_input"></td>
         </tr>
         <tr id="usex">
-            <td><span style="color: red">*</span>性别</td>
+            <td class="log_tdname"><span style="color: red">*</span>性别</td>
             <td>
                 <input type="radio" name="sex" id="sex_nan" value="1">男
                 <input type="radio" name="sex" id="sex_nv" value="2">女
             </td>
         </tr>
         <tr id="upasswd">
-            <td><span style="color: red;">*</span>密码</td>
-            <td><input type="password" name="passwd" id="passwd" onblur="checkpasswd()"></td>
+            <td class="log_tdname"><span style="color: red;">*</span>密码</td>
+            <td><input type="password" name="passwd" id="passwd" onblur="checkpasswd()" class="login_input"></td>
         </tr>
         <tr id="upasswd2">
-            <td><span style="color: red">*</span>确认密码</td>
-            <td><input type="password" name="passwd2" id="passwd2" onblur="checkpasswd()"></td>
+            <td class="log_tdname"><span style="color: red">*</span>确认密码</td>
+            <td><input type="password" name="passwd2" id="passwd2" onblur="checkpasswd()" class="login_input"></td>
             <td><span id="passwdspan"></span> </td>
         </tr>
             <tr id="uyzm">
-                <td>验证码</td>
-                <td><input type="text" name="yzmtext" id="yzmtext" value=""></td>
+                <td class="log_tdname">验证码</td>
+                <td><input type="text" name="yzmtext" id="yzmtext" value="" class="login_input"></td>
                 <td><a href="javascript:getyzm()" target="_self">
-                    <img src="temp/yzm-test.jpg" style="height: 20px;width: 90px" id="yzmimg">
+                    <img src="temp/yzm-test.jpg" style="height: 20px;width: 90px;border-radius: 4px;" id="yzmimg">
                 </a>
                 </td>
             </tr>
             <tr id="uhide">
                 <td colspan="2" style="text-align: center;">
-                    <input type="button" value="注册" onclick="goon_reg()">
-                    <input type="button" value="取消" onclick="tologin()">
+                    <input type="button" value="注册" onclick="goon_reg()" class="input_bt">
+                    <input type="button" value="取消" onclick="tologin()" class="input_bt">
                 </td>
             </tr>
 
 
         <tr id="uimage" style="visibility: hidden;display: none">
-        <td>头像</td>
-        <td><input type="file" name="image" id="image"></td>
+        <td class="log_tdname">头像</td>
+        <td><input type="file" name="image" id="image" class="login_input"></td>
     </tr>
         <tr id="uphone" style="visibility: hidden;display: none">
-            <td>电话</td>
-            <td><input type="tel" name="phone" id="phone"></td>
+            <td class="log_tdname">电话</td>
+            <td><input type="tel" name="phone" id="phone" class="login_input"></td>
         </tr>
         <tr id="uemail" style="visibility: hidden;display: none">
-            <td>Email</td>
-            <td><input type="email" name="email" id="email"></td>
+            <td class="log_tdname">Email</td>
+            <td><input type="email" name="email" id="email" class="login_input"></td>
         </tr>
         <tr id="uaddress" style="visibility: hidden;display: none">
-            <td>地址</td>
-            <td><input type="text" name="address" id="address"></td>
+            <td class="log_tdname">地址</td>
+            <td><input type="text" name="address" id="address" class="login_input"></td>
         </tr>
         <tr id="udesc" style="visibility: hidden;display: none">
-            <td>简介</td>
-            <td><input type="text" name="desc" id="desc"></td>
+            <td class="log_tdname">简介</td>
+            <td><input type="text" name="desc" id="desc" class="login_input"></td>
         </tr>
 
         <tr id="usubmit" style="visibility: hidden;display: none">
             <td colspan="2" style="text-align: center;">
-                <input type="submit" value="确认">
-                <input type="submit" value="跳过">
+                <input type="submit" value="确认" class="input_bt">
+                <input type="submit" value="跳过" class="input_bt">
             </td>
         </tr>
 
     </table>
 </form>
-<a href="javascript:getsex()" target="_self">ceshi</a>
+<%--<a href="javascript:getsex()" target="_self">ceshi</a>--%>
 <script language="JavaScript">
+    function tosert() {
+        document.getElementById("register_form").submit();
+    }
 
     function tologin() {
         window.location.href="first.jsp";
@@ -133,8 +160,7 @@
     }
 </script>
 <div style="visibility: hidden;display: none" id="yzm_imgtext"></div>
-<script src="js/commons.js"></script>
-<script src="js/jquery-1.4.2.min.js"></script>
+
 <script language="JavaScript">
 
     function isIDok() {
@@ -265,7 +291,7 @@
                     "name": $("#name").val(),
                     "passwd": $("#passwd2").val(),
                     "sex": getsex(),
-                    "headimg": $("#image").val(),
+                    "image": $("#image").val(),
                     "phone": $("#phone").val(),
                     "email": $("#email").val(),
                     "address": $("#address").val(),

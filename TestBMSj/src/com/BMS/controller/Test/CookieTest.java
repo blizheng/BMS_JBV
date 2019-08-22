@@ -21,11 +21,30 @@ public class CookieTest extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        String clearid=request.getParameter("cid");
         Cookie[] cookies = request.getCookies();
+        if (clearid==null)
+            clearid="";
 
             for (Cookie cookie : cookies) {
-                cookie.setMaxAge(0);
-                response.addCookie(cookie);
+                if("1".equals(clearid))
+                {
+                    if("user_ID".equals(cookie.getName()))
+                    {
+                        cookie.setMaxAge(0);
+                        response.addCookie(cookie);
+                    }
+                }
+                else if("2".equals(clearid))
+                {
+                    if("manager_ID".equals(cookie.getName()))
+                    {
+                        cookie.setMaxAge(0);
+                        response.addCookie(cookie);
+                    }
+                }
+//                cookie.setMaxAge(0);
+//                response.addCookie(cookie);
             }
         response.sendRedirect("first.jsp");
     }

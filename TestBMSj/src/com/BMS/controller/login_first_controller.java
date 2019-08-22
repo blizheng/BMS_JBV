@@ -36,13 +36,13 @@ public class login_first_controller extends HttpServlet {
         if(userList.size()==1&&userList.get(0).getUser_passwd().equals(passwd))//确认密码
         {
             mess="success";
-            deletecookie(request,response);
+//            deletecookie(request,response);
             Cookie idcookie=new Cookie("user_ID",String.valueOf(user_id));
             idcookie.setMaxAge(24*60*60);
-            Cookie passwdcookie=new Cookie("user_Passwd",passwd);
-            passwdcookie.setMaxAge(24*60*60);
+//            Cookie passwdcookie=new Cookie("user_Passwd",passwd);
+//            passwdcookie.setMaxAge(24*60*60);
             response.addCookie(idcookie);
-            response.addCookie(passwdcookie);
+//            response.addCookie(passwdcookie);
         }
         else if(userList.size()==0)
             mess="ID_error";
@@ -63,10 +63,12 @@ public class login_first_controller extends HttpServlet {
     private void deletecookie(HttpServletRequest request, HttpServletResponse response){
         Cookie[] cookies = request.getCookies();
         for (Cookie cookie : cookies) {
-            if(cookie.getName()=="user_ID"||cookie.getName()=="user_Passwd"){
-                cookie.setMaxAge(0);
-                response.addCookie(cookie);
-            }
+//            if(cookie.getName()=="user_ID"||cookie.getName()=="user_Passwd"){
+//                cookie.setMaxAge(0);
+//                response.addCookie(cookie);
+//            }
+            cookie.setMaxAge(0);
+            response.addCookie(cookie);
         }
     }
 }
