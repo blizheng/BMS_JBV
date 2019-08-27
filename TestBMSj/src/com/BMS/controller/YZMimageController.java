@@ -1,6 +1,7 @@
 package com.BMS.controller;
 
 import com.BMS.service.Temp.Make_IMG;
+import com.BMS.service.Temp.Make_IMG_Easy_Using;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import net.sf.json.JSONObject;
 
@@ -30,7 +31,8 @@ public class YZMimageController extends HttpServlet {
         if (!file.exists()) {
             file.mkdir();
         }
-        Make_IMG yzmimg = new Make_IMG();
+//        Make_IMG yzmimg = new Make_IMG();
+        Make_IMG_Easy_Using yzmimg=new Make_IMG_Easy_Using();
         String[] yzminfo = yzmimg.show_image(yzmpath);
         String yzmtext="";
         String yzmload="";

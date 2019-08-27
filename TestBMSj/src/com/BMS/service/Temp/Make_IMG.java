@@ -100,12 +100,14 @@ public class Make_IMG {
             Map<String, Object> map = this.generateCodeAndPic();
 
             long datanow=System.currentTimeMillis();
+
             String imgname="yzm-"+datanow+"-"+map.get("code").toString()+".jpg";
             //创建文件输出流对象
             OutputStream out = new FileOutputStream(path +"/"+ imgname);
 
             ImageIO.write((RenderedImage) map.get("codePic"), "jpeg", out);
 
+            //验证码内容和验证码图片名称（路径）
             String[] imgarr={map.get("code").toString(),imgname};
 
             return imgarr;

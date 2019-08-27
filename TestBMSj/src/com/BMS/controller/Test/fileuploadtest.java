@@ -70,7 +70,7 @@ public class fileuploadtest extends HttpServlet {
         System.out.println("___+"+aa);
 
         UpLoadFile uf=new UpLoadFile();
-        System.out.println(uf.uploadfile(request,response,"/bookimages","b_img"));
+        System.out.println(uf.uploadfile(request,response,"/testfile","b_img"));
         System.out.println("-----------");
 
     }
